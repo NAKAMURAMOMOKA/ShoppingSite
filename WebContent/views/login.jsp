@@ -25,7 +25,7 @@
 
 
 
-		<form action="/ShoppingSite/MainServlet" method="POST">
+		<form action="/ShoppingSite/LoginServlet" method="POST">
 
 
 			<input type="text" name="username" placeholder="USERNAME"><br>

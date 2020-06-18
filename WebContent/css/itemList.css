@@ -1,1 +1,16 @@
-@charset "UTF-8";
+
+charset "UTF-8";
+
+body {
+ background-color:#f0f8ff;
+
+font-family :Century Gothic;
+}
+
+.padding{
+text-align:center;margin:auto;
+}
+
+h1{
+	color:HOTPINK;
+}

@@ -11,7 +11,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<!-- 文字エンコーディングの指定 -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!-- CSS 取り込む -->
+<link rel="stylesheet" href="css/itemList.css">
+
 <title>商品一覧</title>
 </head>
 <body>
@@ -22,7 +27,7 @@
 
 		<ul>
 			<li>
-				<form action="/ShoppingSite/item" method="POST">
+				<form action="servlet/CartServlet" method="POST">
 					<img src="${pageContext.request.contextPath }/img/${data.item_img }">
 					<c:out value="${data.item_name}" />
 					<p>
@@ -39,7 +44,7 @@
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
-							</select><input class="botton" type="submit"value="カートに入れる">
+							</select><br><input class="botton" type="submit"value="カートに入れる">
 </p>
 				</form>
 		</ul>

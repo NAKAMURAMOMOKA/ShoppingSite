@@ -1,7 +1,6 @@
 package jp.co.aforce.servlet;
 
 
-
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.List;
@@ -24,125 +23,101 @@ public class BuyItemServlet extends HttpServlet {
 
 
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
 
 
-    /**
+	public BuyItemServlet() {
 
-     * コンストラクタ.
+		super();
 
-     */
+	}
 
-    public BuyItemServlet() {
 
-        super();
 
-    }
 
+	@Override
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 
-    /**
+			throws ServletException, IOException {
 
-     * GETメソッドで呼び出された場合の処理
 
-     *
 
-     * @param request
+		// GETメソッドのパラメータ名を取得
 
-     * @param response
+		Enumeration<String> names = request.getParameterNames();
 
-     * @throws javax.servlet.ServletException
 
-     * @throws java.io.IOException
 
-     */
+		String name;		// 現在のパラメータ名
 
-    @Override
+		String item_id = "";		// 商品ID
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+		String purchased_num;	// 購入数
 
-            throws ServletException, IOException {
 
 
+		// 購入ボタンがクリックされた場所を特定
 
-        // GETメソッドのパラメータ名を取得
+		// 今回のサンプルプログラムの場合、クリックされた購入ボタンの値（value）と、リストボックスの値が取得できる
 
-        Enumeration<String> names = request.getParameterNames();
+		// 購入ボタンをクリックした後のURLにパラメータが記載されています
 
+		while (names.hasMoreElements()) {
 
+			// 渡ってきたパラメータを順番に処理
 
-        String name;		// 現在のパラメータ名
+			// パラメータ名を取得
 
-        String item_id = "";		// 商品ID
+			name = names.nextElement();
 
-        String purchased_num;	// 購入数
 
+			// 購入ボタンがクリックされている場合は「購入」のパラメータが取得できる
 
+			if ("購入".equals(request.getParameter(name))) {
 
-        // 購入ボタンがクリックされた場所を特定
+				// 購入ボタンに付属している値（value）が商品IDになる
 
-        // 今回のサンプルプログラムの場合、クリックされた購入ボタンの値（value）と、リストボックスの値が取得できる
+				item_id = name;
 
-        // 購入ボタンをクリックした後のURLにパラメータが記載されています
+			}
 
-        while (names.hasMoreElements()) {
+		}
 
-            // 渡ってきたパラメータを順番に処理
 
-            // パラメータ名を取得
 
-            name = names.nextElement();
+		// ドロップダウンリストから購入数を取得
 
+		purchased_num = request.getParameter(item_id + "list");
 
 
-            // 購入ボタンがクリックされている場合は「購入」のパラメータが取得できる
 
-            if ("購入".equals(request.getParameter(name))) {
+		// 商品情報を取得
 
-                // 購入ボタンに付属している値（value）が商品IDになる
+		ItemModel itemmodel = new ItemModel();
 
-                item_id = name;
+		List<ItemBean> items= itemmodel.getItem();
 
-            }
+		System.out.println("item_id: " + item_id);
 
-        }
 
 
+		request.setAttribute("items", items);
 
-        // ドロップダウンリストから購入数を取得
 
-        purchased_num = request.getParameter(item_id + "list");
+		RequestDispatcher rd = request.getRequestDispatcher("views/itemList.jsp");
 
+		rd.forward(request, response);
 
+	}
 
-        // 商品情報を取得
 
-        ItemModel itemmodel = new ItemModel();
 
-        List<ItemBean> items= itemmodel.getItem();
+	@Override
 
-        System.out.println("item_id: " + item_id);
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
-
-      request.setAttribute("items", items);
-
-
-
-
-        RequestDispatcher rd = request.getRequestDispatcher("views/itemList.jsp");
-
-        rd.forward(request, response);
-
-    }
-
-
-
-    @Override
-
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-    }
+	}
 
 }
