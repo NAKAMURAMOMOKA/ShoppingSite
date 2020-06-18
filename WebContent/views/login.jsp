@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <!--  タグライブラリの宣言-->
-<%@ taglib prefix="c" uri= "http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 
@@ -16,45 +16,40 @@
 </head>
 <body>
 
-<div class="padding">
+	<div class="padding">
 
-<h1>SHINE</h1>
+		<h1>SHINE</h1>
 
-<h2>LOGIN</h2>
-
-
-
-
-<form action="/ShoppingSite/MainServlet" method="POST">
-
-
-<input type ="text"name="username" placeholder="USERNAME"><br>
-<input type ="password"name="password" placeholder="PASSWORD">
+		<h2>LOGIN</h2>
 
 
 
-<input type="submit"value="LOGIN">
 
-</form>
-${requestScope.mainBean.msg}
+		<form action="/ShoppingSite/MainServlet" method="POST">
 
-<br><br>
-<div class="register">
 
-新規会員登録はこちら
-
-<br>
-
-<input type="submit"value="新規登録">
+			<input type="text" name="username" placeholder="USERNAME"><br>
+			<input type="password" name="password" placeholder="PASSWORD">
 
 
 
-</div>
+			<input type="submit" value="LOGIN">
+
+		</form>
+		${requestScope.loginBean.msg} <br>
+		<br>
+		<div class="register">
+
+			新規会員登録はこちら <br> <input type="submit" value="新規登録">
+
+
+
+		</div>
 
 
 
 
 
-</div>
+	</div>
 </body>
 </html>
