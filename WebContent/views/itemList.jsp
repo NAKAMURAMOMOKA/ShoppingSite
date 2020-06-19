@@ -17,6 +17,7 @@
 <!-- CSS 取り込む -->
 <link rel="stylesheet" href="css/itemList.css">
 
+
 <title>商品一覧</title>
 </head>
 <body>
@@ -28,17 +29,23 @@
 		<ul>
 			<li>
 				<form action="servlet/CartServlet" method="POST">
-					<img src="${pageContext.request.contextPath }/img/${data.item_img }">
+					<img src="${pageContext.request.contextPath }/img/${item.item_img}">
+
+
+
 					<c:out value="${data.item_name}" />
 					<p>
-						<c:out value="${data.item_price}" />
+						<c:out value="${item.item_price}" />
 						円
 					</p>
 
 
 					<p>
-						<c:out value="${data.item_id}" />
+						<c:out value="${item.item_id}" />
 					</p>
+
+
+
 					<p>
 						数量:<select name="quantity">
 							<option value="1">1</option>
