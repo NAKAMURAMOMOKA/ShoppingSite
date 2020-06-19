@@ -20,20 +20,13 @@ import jp.co.aforce.models.ItemModel;
 @WebServlet("/BuyItemServlet")
 
 public class BuyItemServlet extends HttpServlet {
-
-
-
 	private static final long serialVersionUID = 1L;
-
-
 
 	public BuyItemServlet() {
 
 		super();
 
 	}
-
-
 
 
 	@Override

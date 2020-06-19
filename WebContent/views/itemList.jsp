@@ -23,12 +23,13 @@
 <body>
 
 
+
 	<main>
 		<h1>商品一覧</h1>
 
 		<ul>
 			<li>
-				<form action="servlet/CartServlet" method="POST">
+				<form action="servlet/CartServlet" method="GET">
 					<img src="${pageContext.request.contextPath }/img/${item.item_img}">
 
 
