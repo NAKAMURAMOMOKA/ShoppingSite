@@ -1,7 +1,7 @@
-charset "UTF-8";
+@charset"UT-8";
 
 body {
-  background-color:#f0f8ff;
+ background-color:#f0f8ff;
 
 font-family :Century Gothic;
 }
@@ -12,7 +12,5 @@ text-align:center;margin:auto;
 
 h1{
 	color:HOTPINK;
+	font-family :Century Gothic;
 }
-
-
-

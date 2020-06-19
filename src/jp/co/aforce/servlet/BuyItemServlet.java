@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,26 +15,51 @@ import jp.co.aforce.beans.ItemBean;
 import jp.co.aforce.models.ItemModel;
 
 
-
-@WebServlet("/BuyItemServlet")
-
 public class BuyItemServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	public BuyItemServlet() {
-
-		super();
-
-	}
+	//private static final long serialVersionUID = 1L;
+	//public BuyItemServlet() {
+		//super();
+//	}
 
 
 	@Override
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 
 			throws ServletException, IOException {
 
+		System.out.println("get method");
 
+		RequestDispatcher rDispatcher = request.getRequestDispatcher("views/itemList.jsp");
+
+		rDispatcher.forward(request, response);
+
+	}
+
+	@Override
+
+	public void doPost (HttpServletRequest request, HttpServletResponse response)
+
+			throws ServletException, IOException {
+
+		System.out.println("post method");
+
+		RequestDispatcher rd = request.getRequestDispatcher("views/itemList.jsp");
+
+		rd.forward(request, response);
+
+
+	// 文字のエンコードを UTF-8 とする。これがないと文字化け。
+			request.setCharacterEncoding("UTF-8");
+
+
+	// 商品情報を取得
+
+	ItemModel itemmodel = new ItemModel();
+
+	List<ItemBean> items= itemmodel.getItem();
+
+request.setAttribute("items", items);
 
 		// GETメソッドのパラメータ名を取得
 
@@ -43,74 +67,34 @@ public class BuyItemServlet extends HttpServlet {
 
 
 
-		String name;		// 現在のパラメータ名
+		String item_name =request.getParameter("item_name"); //商品名
 
-		String item_id = "";		// 商品ID
+		String item_id = request.getParameter("item_id"); 	// 商品ID
 
-		String purchased_num;	// 購入数
+	    int item_price= request.getParameter("item_price"); //値段
 
-
-
-		// 購入ボタンがクリックされた場所を特定
-
-		// 今回のサンプルプログラムの場合、クリックされた購入ボタンの値（value）と、リストボックスの値が取得できる
-
-		// 購入ボタンをクリックした後のURLにパラメータが記載されています
-
-		while (names.hasMoreElements()) {
-
-			// 渡ってきたパラメータを順番に処理
-
-			// パラメータ名を取得
-
-			name = names.nextElement();
+	    String item_img = request.getParameter("item_img"); //商品画像
 
 
-			// 購入ボタンがクリックされている場合は「購入」のパラメータが取得できる
+        ItemBean itemBean = new ItemBean();
+        itemBean.setItemName(item_name);
+        itemBean.setItemId(item_id);
+        itemBean.setItemPrice(item_price);
+        itemBean.setItemImg(item_img);
 
-			if ("購入".equals(request.getParameter(name))) {
+        itemBean.getItemName();
+        itemBean.getItemId();
+        itemBean.getItemPrice();
+        itemBean.getItemImg();
 
-				// 購入ボタンに付属している値（value）が商品IDになる
+        String forward_jsp = "/views/itemList.jsp";
+        RequestDispatcher rDispatcher = request.getRequestDispatcher("views/itemList.jsp");
 
-				item_id = name;
-
-			}
-
-		}
-
-
-
-		// ドロップダウンリストから購入数を取得
-
-		purchased_num = request.getParameter(item_id + "list");
-
-
-
-		// 商品情報を取得
-
-		ItemModel itemmodel = new ItemModel();
-
-		List<ItemBean> items= itemmodel.getItem();
-
-		System.out.println("item_id: " + item_id);
-
-
-
-		request.setAttribute("items", items);
-
-
-		RequestDispatcher rd = request.getRequestDispatcher("views/itemList.jsp");
-
-		rd.forward(request, response);
+		rDispatcher.forward(request, response);
 
 	}
-
-
-
-	@Override
-
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-	}
-
 }
+
+
+
+

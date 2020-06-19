@@ -15,10 +15,13 @@
     <servlet-class>jp.co.aforce.servlet.LoginServlet</servlet-class>
   </servlet>
 
-   <servlet>
+
+<servlet>
     <servlet-name>BuyItemServlet</servlet-name>
     <servlet-class>jp.co.aforce.servlet.BuyItemServlet</servlet-class>
   </servlet>
+
+
    <servlet>
     <servlet-name>CartServlet</servlet-name>
     <servlet-class>jp.co.aforce.servlet.CartServlet</servlet-class>
@@ -29,10 +32,12 @@
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
 
-   <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>BuyItemServlet</servlet-name>
     <url-pattern>/BuyItemServlet</url-pattern>
   </servlet-mapping>
+
+
 
    <servlet-mapping>
     <servlet-name>CartServlet</servlet-name>
