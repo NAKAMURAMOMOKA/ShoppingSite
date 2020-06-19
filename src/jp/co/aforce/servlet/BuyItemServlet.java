@@ -2,7 +2,6 @@ package jp.co.aforce.servlet;
 
 
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -49,21 +48,21 @@ public class BuyItemServlet extends HttpServlet {
 		rd.forward(request, response);
 
 
-	// 文字のエンコードを UTF-8 とする。これがないと文字化け。
-			request.setCharacterEncoding("UTF-8");
+		// 文字のエンコードを UTF-8 とする。これがないと文字化け。
+		request.setCharacterEncoding("UTF-8");
 
 
-	// 商品情報を取得
+		// 商品情報を取得
 
-	ItemModel itemmodel = new ItemModel();
+		ItemModel itemmodel = new ItemModel();
 
-	List<ItemBean> items= itemmodel.getItem();
+		List<ItemBean> items= itemmodel.getItem();
 
-request.setAttribute("items", items);
+		request.setAttribute("items", items);
 
 		// GETメソッドのパラメータ名を取得
 
-		Enumeration<String> names = request.getParameterNames();
+		//Enumeration<String> names = request.getParameterNames();
 
 
 
@@ -71,24 +70,24 @@ request.setAttribute("items", items);
 
 		String item_id = request.getParameter("item_id"); 	// 商品ID
 
-	    int item_price= request.getParameter("item_price"); //値段
+	//	int item_price= request.getParameter("item_price"); //値段
 
-	    String item_img = request.getParameter("item_img"); //商品画像
+		String item_img = request.getParameter("item_img"); //商品画像
 
 
-        ItemBean itemBean = new ItemBean();
-        itemBean.setItemName(item_name);
-        itemBean.setItemId(item_id);
-        itemBean.setItemPrice(item_price);
-        itemBean.setItemImg(item_img);
+		ItemBean itemBean = new ItemBean();
+		itemBean.setItemName(item_name);
+		itemBean.setItemId(item_id);
+//		itemBean.setItemPrice(item_price);
+		itemBean.setItemImg(item_img);
 
-        itemBean.getItemName();
-        itemBean.getItemId();
-        itemBean.getItemPrice();
-        itemBean.getItemImg();
+		itemBean.getItemName();
+		itemBean.getItemId();
+		itemBean.getItemPrice();
+		itemBean.getItemImg();
 
-        String forward_jsp = "/views/itemList.jsp";
-        RequestDispatcher rDispatcher = request.getRequestDispatcher("views/itemList.jsp");
+		String forward_jsp = "/views/itemList.jsp";
+		RequestDispatcher rDispatcher = request.getRequestDispatcher("views/itemList.jsp");
 
 		rDispatcher.forward(request, response);
 
