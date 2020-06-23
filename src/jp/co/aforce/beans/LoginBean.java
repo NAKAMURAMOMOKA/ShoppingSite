@@ -19,7 +19,6 @@ public class LoginBean  implements Serializable{
 
 	//ゲッター（ユーザーネーム）
 	public String getUsername() {
-
 		return username;
 	}
 
