@@ -22,9 +22,6 @@
 
 		<h2>LOGIN</h2>
 
-
-
-
 		<form action="/ShoppingSite/LoginServlet" method="POST">
 
 
@@ -36,22 +33,17 @@
 			<input type="submit" value="LOGIN">
 
 		</form>
-		${requestScope.loginBean.msg} <br>
-		<br>
+		${requestScope.loginBean.msg} <br> <br>
 		<div class="register">
 
 			新規会員登録はこちら <br> <input type="submit" value="新規登録">
 
-  <%-- ログイン済みの場合はログアウトボタンを表示 --%>
-                    <% if ("login".equals(session.getAttribute("login_state"))) { %>
-                    <input class="common_button" type="submit" name="submit" value="ログアウト"/>
-                    <% }%>
-
+			<%-- ログイン済みの場合はログアウトボタンを表示 --%>
+			<% if ("login".equals(session.getAttribute("login_state"))) { %>
+			<input class="common_button" type="submit" name="submit"
+				value="ログアウト" />
+			<% }%>
 		</div>
-
-
-
-
 
 	</div>
 </body>
