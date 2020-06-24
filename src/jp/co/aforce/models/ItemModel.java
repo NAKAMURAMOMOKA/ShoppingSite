@@ -1,7 +1,6 @@
 package jp.co.aforce.models;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,13 +37,13 @@ public class ItemModel {
 
 				// 商品一覧を格納するBeanクラスをインスタンス化
 				ItemBean item_bean = new ItemBean(item_id, item_name, item_price, item_img);
-				System.out.println("itembean: " + item_bean);
+				//System.out.println("itembean: " + item_bean);
 
 				// Beanクラスをリストに追加
 				items.add(item_bean);
 			}
 
-		} catch (SQLException sqle) {
+		} catch (Exception sqle) {
 			sqle.printStackTrace();
 
 		} finally {

@@ -29,7 +29,7 @@
 
 
 			<input type="text" name="username" placeholder="USERNAME"><br>
-			<input type="password" name="password" placeholder="PASSWORD">
+			<input type="password" name="password" placeholder="PASSWORD"><br>
 
 
 
@@ -42,7 +42,10 @@
 
 			新規会員登録はこちら <br> <input type="submit" value="新規登録">
 
-
+  <%-- ログイン済みの場合はログアウトボタンを表示 --%>
+                    <% if ("login".equals(session.getAttribute("login_state"))) { %>
+                    <input class="common_button" type="submit" name="submit" value="ログアウト"/>
+                    <% }%>
 
 		</div>
 

@@ -1,6 +1,5 @@
 package jp.co.aforce.servlet;
 
-
 import java.io.IOException;
 import java.util.List;
 
@@ -9,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jp.co.aforce.beans.ItemBean;
 import jp.co.aforce.models.ItemModel;
@@ -47,12 +47,13 @@ public class BuyItemServlet extends HttpServlet {
 
 		// 商品情報を取得
 		ItemModel itemmodel = new ItemModel();
+		HttpSession session =request.getSession();
 		List<ItemBean> items= itemmodel.getItem();
-		request.setAttribute("items", items);
+		session.setAttribute("items", items);
+
+
 
 		// GETメソッドのパラメータ名を取得
-
-		//Enumeration<String> names = request.getParameterNames();
 
 		String item_name =request.getParameter("item_name"); //商品名
 		String item_id = request.getParameter("item_id"); 	// 商品ID

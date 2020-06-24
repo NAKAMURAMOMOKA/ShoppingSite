@@ -1,0 +1,38 @@
+
+<title>商品一覧</title>
+</head>
+<body>
+	<div class="padding">
+		<h1>商品一覧</h1>
+		<c:forEach items="${Items}" var="Items">
+			<form action="/ShoppingSite/BuyItemServlet" method="GET">
+			<img src="${pageContext.request.contextPath }/img/${Items.item_img}">
+                商品名<br>
+				<c:out value="${Items.item_name}" />
+
+				<c:out value="${Items.item_img}" />
+
+				<c:out value="${Items.item_price}" />
+				<br>円
+
+				<p>
+					<c:out value="${Items.item_id}" />
+				</p>
+				<p>
+					数量:<select name="quantity">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select><br> <input class="botton" type="submit" value="カートに入れる">
+				</p>
+				<p>
+					<input class="botton" type="submit" value="カートを確認">
+				</p>
+			</form>
+
+		</c:forEach>
+
+	</div>
+</html>
+
+

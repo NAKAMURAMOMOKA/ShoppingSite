@@ -4,8 +4,7 @@
 <!--  タグライブラリの宣言-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<jsp:useBean id="beans" class="jp.co.aforce.beans.ItemBean"
-	scope="request" />
+
 
 
 <!DOCTYPE html>
@@ -22,48 +21,29 @@
 </head>
 <body>
 	<div class="padding">
+		<h1>ITEM LIST</h1>
+		<c:forEach items="${items}" var="items">
+			<form action="servlet/CartServlet" method="POST">
+				<img src="${pageContext.request.contextPath}/img/${items.itemImg}"
+					alt=""> <br> 商品名<br> ${items.itemName} <br>
+				${items.itemPrice} <br>円
 
-		<main>
-			<h1>商品一覧</h1>
-
-			<ul>
-				<li>
-					<form action="servlet/CartServlet" method="POST">
-						<img src="${pageContext.request.contextPath }/img/${item.item_img}">
-
-
-
-						<c:out value="${data.item_name}" />
-						<p>
-							<c:out value="${item.item_price}" />
-							円
-						</p>
-
-
-						<p>
-							<c:out value="${item.item_id}" />
-						</p>
-
-
-
-						<p>
-							数量:<select name="quantity">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-							</select><br>
-							<input class="botton" type="submit" value="カートに入れる">
-
-						</p>
-
-						<p>
-							<input class="botton" type="submit" value="カートを確認">
-						</p>
-
-					</form>
-			</ul>
-		</main>
+				<p>${items.itemId}</p>
+				<p>
+					数量:<select name="quantity">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select><br> <input class="botton" type="submit" value="カートに入れる">
+				</p>
+				<p>
+					<input class="botton" type="submit" value="カートを確認">
+				</p>
+			</form>
+		</c:forEach>
 	</div>
+</body>
 </html>
+
 
 

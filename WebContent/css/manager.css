@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+body {
+ background-color:#f0f8ff;
+
+font-family :Century Gothic;
+}
+
+.padding{
+text-align:center;margin:auto;
+}
+
+h3{
+	color:HOTPINK;
+	text-align:center;margin:auto;
+	font-family :Century Gothic;
+}

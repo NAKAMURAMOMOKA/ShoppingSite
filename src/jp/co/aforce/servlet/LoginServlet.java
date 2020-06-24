@@ -2,6 +2,7 @@ package jp.co.aforce.servlet;
 
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jp.co.aforce.beans.ItemBean;
 import jp.co.aforce.beans.LoginBean;
+import jp.co.aforce.models.ItemModel;
 import jp.co.aforce.models.LoginModel;;
 
 
@@ -51,11 +54,28 @@ public class LoginServlet extends HttpServlet {
 		String forward_jsp = "/views/login.jsp";
 
 
+
 		if (loginModel.loginCheck(username, password)) {
 
 
-			// ログインに成功した先の JSP を指定
-			forward_jsp = "/views/itemList.jsp";
+			// ItemModelをインスタンス化する
+			ItemModel itemModel = new ItemModel();
+			List<ItemBean> items =itemModel.getItem();
+			request.setAttribute("items", items);
+			System.out.println(items);
+
+			System.out.println(username);
+			System.out.println(password);
+
+
+
+			String admin =loginModel.getAdmin();
+			if(admin.equals("YES")) {
+				forward_jsp = "/views/manager.jsp";
+			} else {
+
+				forward_jsp = "/views/itemList.jsp";
+			}
 
 			// ログインが失敗したときの処理
 		} else {
@@ -69,7 +89,5 @@ public class LoginServlet extends HttpServlet {
 		rDispatcher.forward(request, response);
 
 	}
+
 }
-
-
-

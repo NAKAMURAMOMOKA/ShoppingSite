@@ -10,7 +10,7 @@ public class ItemBean  implements Serializable{
 	private String item_name;
 	private int item_price;
 	private String item_img;
-
+	private String msg;
 
 	public ItemBean(){
 
@@ -75,7 +75,17 @@ public class ItemBean  implements Serializable{
 	public String getItemImg(){
 		return this.item_img;
 	}
-}
 
+    //msg ゲッタ
+	public void setMsg(String msg) {
+		this.msg=msg;
+	}
+
+	//msg セッタ
+	public String getMsg() {
+		return this. msg;
+
+}
+}
 
 
