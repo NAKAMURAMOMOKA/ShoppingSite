@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import jp.co.aforce.beans.ItemBean;
 import jp.co.aforce.models.ItemModel;
 
-
+//●商品一覧● 一般用
 public class BuyItemServlet extends HttpServlet {
 	//private static final long serialVersionUID = 1L;
 	//public BuyItemServlet() {

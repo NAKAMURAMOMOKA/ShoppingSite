@@ -16,17 +16,44 @@
 <body>
 
 	<h3>商品一覧</h3>
+	<div class="padding">
+		<form action="/ShoppingSite/ProductUpdateServlet" method="POST">
 
-	<c:forEach items="${items}" var="items">
+			<p>
+				<button type="submit">在庫更新</button>
+			</p>
+		</form>
+		<form action="/ShoppingSite/AddProductServlet" method="POST">
 
-		<img src="${pageContext.request.contextPath}/img/${items.itemImg}"
-			alt="">
-		<br> 商品名<br> ${items.itemName} <br>
-				${items.itemPrice} <br>円
+			<p>
+				<button type="submit">商品追加</button>
+			</p>
+		</form>
+		<form action="/ShoppingSite/DeleteProductServlet" method="POST">
 
-				<p>${items.itemId}</p>
+			<p>
+				<button type="submit">商品削除</button>
+			</p>
+		</form>
+		<c:forEach items="${items}" var="items">
+			<table class="add">
+				<tr>
+					<td><img
+						src="${pageContext.request.contextPath}/img/${items.itemImg}"
+						alt="" width=350 hight=250></td>
+					<td><br> 商品名<br> ${items.itemName} <br></td>
+					<td>
+						<p>${items.itemPrice}円</p>
+					</td>
 
-	</c:forEach>
+					<td>
+						<p>${items.itemId}</p>
+					</td>
+				</tr>
+			</table>
+
+		</c:forEach>
+	</div>
 
 
 </body>

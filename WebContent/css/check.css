@@ -1,1 +1,18 @@
 @charset "UTF-8";
+body {
+ background-color:#f0f8ff;
+
+font-family :Century Gothic;
+}
+
+.cart{
+text-align:center;
+margin:auto;
+
+}
+
+h3{
+	color:HOTPINK;
+	font-family :Century Gothic;
+	text-align:center;
+}

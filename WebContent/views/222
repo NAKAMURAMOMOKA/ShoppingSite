@@ -35,4 +35,70 @@
 	</div>
 </html>
 
+	//GET
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		System.out.println("get repuest");
+
+
+		//カートに追加ボタンを押すと遷移する
+		RequestDispatcher rDispatcher = request.getRequestDispatcher("/views/cart.jsp");
+		rDispatcher.forward(request, response);
+	}
+
+	//POST
+	@Override
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		System.out.println("post request");
+		// 文字のエンコードを UTF-8 とする。これがないと文字化け。
+		request.setCharacterEncoding("UTF-8");
+
+       //セッション
+		HttpSession session = request.getSession();
+
+
+		String item_name =request.getParameter("item_name"); //商品名
+		String item_id = request.getParameter("item_id"); 	// 商品ID
+		String item_price_string = request.getParameter("item_price");
+		int item_price = Integer.parseInt(item_price_string); //値段
+		String item_img = request.getParameter("item_img"); //商品画像
+
+		CartBean cartBean = new CartBean();
+		cartBean.setCartName(item_name);
+		cartBean.setCartId(item_id);
+		cartBean.setCartPrice(item_price);
+		cartBean.setCartImg(item_img);
+
+		cartBean.getCartName();
+		cartBean.getCartId();
+		cartBean.getCartPrice();
+		cartBean.getCartImg();
+
+		if (session == null) {
+			System.out.println("<p>セッションは存在しません。開始します</p>");
+			session = request.getSession();
+		} else {
+
+			System.out.println("カートに入れました");
+			session.setAttribute("cartBean", cartBean);
+
+		}
+
+
+	// forwaed_jsp に設定されているJSPへディスパッチ
+	//RequestDispatcher rDispatcher = request.getRequestDispatcher(forward_jsp);
+	//rDispatcher.forward(request, response);
+
+
+
+
+
+
+
+
+
+
+
 

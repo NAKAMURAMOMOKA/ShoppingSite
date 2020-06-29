@@ -8,7 +8,6 @@
 <head>
 <!-- 文字エンコーディングの指定 -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
 <!-- CSS 取り込む -->
 <link rel="stylesheet" href="css/login.css">
 

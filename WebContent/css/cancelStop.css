@@ -1,4 +1,4 @@
-@charset"UT-8";
+@charset "UTF-8";
 
 body {
  background-color:#f0f8ff;
@@ -6,13 +6,13 @@ body {
 font-family :Century Gothic;
 }
 
-.padding{
-text-align:center;margin:auto;
-float: left;
-padding-right: 40px;
+.cart{
+text-align:center;
+margin:auto;
+
 }
 
-h1{
+h2{
 	color:HOTPINK;
 	font-family :Century Gothic;
 	text-align:center;

@@ -17,28 +17,36 @@
 <title>商品一覧</title>
 </head>
 <body>
-	<div class="padding">
-		<h1>ITEM LIST</h1>
-		<c:forEach items="${items}" var="items">
-			<form action="servlet/CartServlet" method="POST">
+
+	<h1>ITEM LIST</h1>
+	<c:forEach items="${items}" var="items">
+		<div class="padding">
+			<form action="/ShoppingSite/CartServlet" method="POST">
+
 				<img src="${pageContext.request.contextPath}/img/${items.itemImg}"
-					alt=""> <br> 商品名<br> ${items.itemName} <br>
-				${items.itemPrice} <br>円
+					alt="" width=200 hight=200> <br> 商品名<br>
+				<p>${items.itemName}</p>
+				${items.itemPrice} 円
 
 				<p>${items.itemId}</p>
-				<p>
-					数量:<select name="quantity">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-					</select><br> <input class="botton" type="submit" value="カートに入れる">
-				</p>
+
+				数量:<select name="quantity">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select><br> <input class="botton" type="submit" value="カートに入れる"><br>
+				<input type="hidden" name="itemName" value="${items.itemName}">
+				<input type="hidden" name="itemPrice" value="${items.itemPrice}">
+				<input type="hidden" name="itemId" value="${items.itemId}">
+				<input type="hidden" name="itemImg" value="${items.itemImg}">
+
 				<p>
 					<input class="botton" type="submit" value="カートを確認">
 				</p>
+
 			</form>
-		</c:forEach>
-	</div>
+		</div>
+	</c:forEach>
 </body>
 </html>
 
