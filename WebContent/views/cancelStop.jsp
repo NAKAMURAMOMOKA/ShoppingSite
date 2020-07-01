@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h2>購入の取り消しを中断いたしました。</h2>
-
+<div class="cart">
 	<form action="/ShoppingSite/BuyItemServlet" method="POST">
 
 		<p>
@@ -27,6 +27,7 @@
 		</p>
 
 	</form>
+	</div>
 
 </body>
 </html>

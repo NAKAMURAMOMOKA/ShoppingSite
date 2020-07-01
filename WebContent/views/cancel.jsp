@@ -10,7 +10,7 @@
 </head>
 <body>
 <h2>取り消しを完了いたしました。カートは空です。</h2>
-<div class="cancel">
+<div class="cart">
 <form action="/ShoppingSite/BuyItemServlet" method="POST">
 
 			<p>

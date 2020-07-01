@@ -6,20 +6,13 @@ body {
 font-family :Century Gothic;
 }
 
-.cart{
-text-align:center;
-margin:auto;
-
-}
 
 h2{
 	color:HOTPINK;
 	font-family :Century Gothic;
 	text-align:center;
 }
-.cancel{
-text-align:center;margin:auto;
-float: left;
-padding-right: 40px;
+.cart{
+text-align:center;
 
 }
